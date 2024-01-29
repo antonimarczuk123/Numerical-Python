@@ -7503,7 +7503,7 @@ a.anchor-link {
 </ul>
 </li>
 <li><a href="#toc1_2_">Pola kierunków</a></li>
-<li><a href="#toc1_3_">Numeryczne rozwiązywanie równań z użyciem SciPy</a><ul>
+<li><a href="#toc1_3_">Numeryczne rozwiązywanie równań z użyciem SciPy - <code>scipy.integrate.odeint</code></a><ul>
 <li><a href="#toc1_3_1_">Równania Lotki-Volterry dla popolacji drapieżnik/ofiara</a></li>
 <li><a href="#toc1_3_2_">Lorenz equations</a></li>
 </ul>
@@ -7938,7 +7938,18 @@ $\displaystyle x{\left(t \right)} = C_{1} e^{\omega_{0} t \left(- \gamma + \sqrt
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Numeryczne-rozwi%C4%85zywanie-r%C3%B3wna%C5%84-z-u%C5%BCyciem-SciPy"><a id="toc1_3_"></a><a href="#toc0_">Numeryczne rozwiązywanie równań z użyciem SciPy</a><a class="anchor-link" href="#Numeryczne-rozwi%C4%85zywanie-r%C3%B3wna%C5%84-z-u%C5%BCyciem-SciPy">¶</a></h2>
+<h2 id="Numeryczne-rozwi%C4%85zywanie-r%C3%B3wna%C5%84-z-u%C5%BCyciem-SciPy---scipy.integrate.odeint"><a id="toc1_3_"></a><a href="#toc0_">Numeryczne rozwiązywanie równań z użyciem SciPy - <code>scipy.integrate.odeint</code></a><a class="anchor-link" href="#Numeryczne-rozwi%C4%85zywanie-r%C3%B3wna%C5%84-z-u%C5%BCyciem-SciPy---scipy.integrate.odeint">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>$$ Y' = f(Y, t), \; where \; Y \in \mathbb{R}^m \; and \; t \in \mathbb{R} $$</p>
 </div>
 </div>
 </div>
@@ -8211,9 +8222,9 @@ $$</p>
 <span class="n">Y0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
 
 <span class="c1"># Solve the ODEs for different parameter values</span>
-<span class="n">Y1</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">beta</span><span class="p">))</span>
-<span class="n">Y2</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">beta</span><span class="p">))</span>
-<span class="n">Y3</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">beta</span><span class="p">))</span>
+<span class="n">Y1</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">((</span><span class="k">lambda</span> <span class="n">Y</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">beta</span><span class="p">)),</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># zapis z lambda</span>
+<span class="n">Y2</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">((</span><span class="k">lambda</span> <span class="n">Y</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">beta</span><span class="p">)),</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># zapis z lambda</span>
+<span class="n">Y3</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">beta</span><span class="p">))</span> <span class="c1"># zapis z args()</span>
 
 <span class="c1"># Create a 3D plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">'projection'</span><span class="p">:</span> <span class="s1">'3d'</span><span class="p">})</span>
