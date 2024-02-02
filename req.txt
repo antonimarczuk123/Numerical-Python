@@ -4,5 +4,6 @@ sympy
 matplotlib
 pandas
 cvxopt
+networkx
 ipykernel
 notebook
