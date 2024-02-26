@@ -36,3 +36,4 @@ cvxopt
 networkx
 ipykernel
 notebook
+seaborn
