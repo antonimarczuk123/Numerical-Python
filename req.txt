@@ -1,9 +1,0 @@
-numpy
-scipy
-sympy
-matplotlib
-pandas
-cvxopt
-networkx
-ipykernel
-notebook
